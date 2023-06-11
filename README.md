@@ -3,7 +3,8 @@
 
 We conduct our experiments on the following environments:
 ```
-python 3.9.16
+System: Ubuntu 18.04
+python: 3.9.16
 CUDA: 11.6
 torch: 1.13.1
 ```
@@ -15,6 +16,7 @@ pip install -r requirements.txt
 ```
 
 ## Running the Code
+the [HVG](https://drive.google.com/file/d/1BVllGyh2DDbtmzmRS95C6k83nyaZ8YoA) and [checkpoint](https://drive.google.com/file/d/1B5upgf0FT9d-jsji_vdv5jxz8oybL1On) trained by us  are available for download. 
 
 ### Usage and Options:
 Usage for **inference**:
@@ -32,12 +34,29 @@ Options for **inference**:
   --matrix  data needs to be predicted, a example as sample_data/sample_data_matrix.txt
   --out     output file
 ```
-[Pretrained model](https://drive.google.com/file/d/1B5upgf0FT9d-jsji_vdv5jxz8oybL1On/view?usp=sharing) are available for download. 
-
-a sample as :
+If you need to use our pre-trained model for inference, please download the [HVG](https://drive.google.com/file/d/1BVllGyh2DDbtmzmRS95C6k83nyaZ8YoA) and [checkpoint](https://drive.google.com/file/d/1B5upgf0FT9d-jsji_vdv5jxz8oybL1On) files above.  
+Then replace the parameter `--matrix` as `--matrix=<your_count_file>` to infer the count file you need.  
+a inference sample as :
 ```
 python -u infer.py --ckp=checkpoints/sample_ckp.pkl --HVG=sample_data/sample_gene_list.txt --matrix=sample_data/sample_data_matrix.txt --out=out.csv
 ```
+If you want to **train** your dataset, please use:
+```
+python -u train.py 
+    --train_dir = <train_dir>     # Directory of training data
+    --val_dir = <val_dir>         # Directory of val data
+    --batch_size = <batch_size>   # batch size
+    --lr = <learning_rate>        # learning rate
+    --max_epoch = <max_epoch>     # max epoch
+    --output = <output_dir>       # The output directory of training,the output of training mainly including checkpoint and HVG, and logs
+    --gpu_id = <id>               # Not necessary, Specify the No. of the gpu if it is available
+```
+An **training** example of using default parameters :
+```
+python -u train.py --gpu_id=0
+```
+
+
 
 ## License
 

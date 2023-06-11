@@ -31,7 +31,7 @@ class feat_classifier(nn.Module):
 
 class VREx(nn.Module):
 
-    """V-REx algorithm from http://arxiv.org/abs/2003.00688"""
+    """the V-REx method from http://arxiv.org/abs/2003.00688"""
 
     def __init__(self, args):
         super(VREx, self).__init__()
@@ -73,7 +73,7 @@ class VREx(nn.Module):
         if sch:
             sch.step()
         self.update_count += 1
-        return {'loss': loss.item(),'mean': mean.item(), 'nll': nll.item(),'penalty': penalty.item()}
+        return {'loss': loss.item(),'mean': mean.item(), 'penalty': penalty.item()}
 
 
     def predict(self, x):

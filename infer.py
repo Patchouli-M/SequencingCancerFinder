@@ -17,12 +17,12 @@ input_loader = DataLoader(dataset=input_set,batch_size = len(input_set))
 algorithm = model.VREx(args)
 algorithm.load_state_dict(torch.load(args.ckp)['model_dict'])
 algorithm.eval()
-predict_dict = {'sample':[],'malignant_state':[]}
+predict_dict = {'sample':[],'predict':[]}
 for data in input_loader:
     out = torch.argmax(algorithm.predict(data[0]),axis=1)
 for idx,i in enumerate(out):
     predict_dict['sample'].append(input_data.index[idx])
-    predict_dict['malignant_state'].append(i.item())
+    predict_dict['predict'].append(i.item())
 predict_df = pd.DataFrame(predict_dict)
 predict_df.to_csv(args.out,index=False)
 print(predict_df)

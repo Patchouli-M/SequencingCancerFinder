@@ -45,8 +45,8 @@ def infer_args():
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--num_classes', type=int, default=2, help="num classes")
     parser.add_argument('--ckp', type=str, default='checkpoints/sample_ckp.pkl')
-    parser.add_argument('--HVG', type=str, default='data/test_data/sample_gene_list.txt')
-    parser.add_argument('--matrix', type=str, default='data/test_data/sample_data_matrix.txt')
+    parser.add_argument('--HVG', type=str, default='sample_data/sample_gene_list.txt')
+    parser.add_argument('--matrix', type=str, default='sample_data/sample_data_matrix.txt')
     parser.add_argument('--out', type=str, default='out.csv')
     args = parser.parse_args()
     return args
