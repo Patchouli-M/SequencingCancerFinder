@@ -45,14 +45,14 @@ python -u infer.py --ckp=checkpoints/sample_ckp.pkl --HVG=sample_data/sample_gen
 ```
 If you want to **train** your dataset, please use:
 ```
-python -u train.py 
-    --train_dir=<train_dir>     # Directory of training data
-    --val_dir=<val_dir>         # Directory of val data
-    --batch_size=<batch_size>   # batch size
-    --lr=<learning_rate>        # learning rate
-    --max_epoch=<max_epoch>     # max epoch
-    --output=<output_dir>       # The output directory of training,the output of training mainly including checkpoint and HVG, and logs
-    --gpu_id=<id>               # Not necessary, Specify the No. of the gpu if it is available
+python -u train.py  \
+    --train_dir=<train_dir> \     # Directory of training data
+    --val_dir=<val_dir> \         # Directory of val data
+    --batch_size=<batch_size> \   # batch size
+    --lr=<learning_rate> \        # learning rate
+    --max_epoch=<max_epoch> \     # max epoch
+    --output=<output_dir> \       # The output directory of training,the output of training mainly including checkpoint and HVG, and logs
+    --gpu_id=<id>                 # Not necessary, Specify the No. of the gpu if it is available
 ```
 An simple **training** example of using default parameters :
 ```
