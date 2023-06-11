@@ -5,7 +5,6 @@ We conduct our experiments on the following environments:
 ```
 python 3.9.16
 CUDA: 11.6
-GPU: NVIDIA 3090
 torch: 1.13.1
 ```
 Install environment :
