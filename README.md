@@ -43,6 +43,7 @@ a inference sample as :
 ```
 python -u infer.py --ckp=checkpoints/sample_ckp.pkl --HVG=sample_data/sample_gene_list.txt --matrix=sample_data/sample_data_matrix.txt --out=out.csv
 ```
+---
 If you want to **train** your dataset, please use:
 ```
 python -u train.py  \
