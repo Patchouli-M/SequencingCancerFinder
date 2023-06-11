@@ -16,8 +16,6 @@ pip install -r requirements.txt
 ```
 
 ## Running the Code
-the [HVG](https://drive.google.com/file/d/1BVllGyh2DDbtmzmRS95C6k83nyaZ8YoA) and [checkpoint](https://drive.google.com/file/d/1B5upgf0FT9d-jsji_vdv5jxz8oybL1On) trained by us  are available for download. 
-
 ### Usage and Options:
 Usage for **inference**:
 ```
@@ -34,9 +32,14 @@ Options for **inference**:
   --matrix  data needs to be predicted, a example as sample_data/sample_data_matrix.txt
   --out     output file
 ```
-If you need to use our pre-trained model for inference, please download the [HVG](https://drive.google.com/file/d/1BVllGyh2DDbtmzmRS95C6k83nyaZ8YoA) and [checkpoint](https://drive.google.com/file/d/1B5upgf0FT9d-jsji_vdv5jxz8oybL1On) files above.  
-Then replace the parameter `--matrix` as `--matrix=<your_count_file>` to infer the count file you need.  
+
+the [HVG](https://drive.google.com/file/d/1BVllGyh2DDbtmzmRS95C6k83nyaZ8YoA) and [checkpoint](https://drive.google.com/file/d/1B5upgf0FT9d-jsji_vdv5jxz8oybL1On) trained by us  are available for download.   
+If you need to use our pre-trained model for inference, please:  
+1. Download the HVG and checkpoint above and specify them with the parameter `--HVG` and `--ckp`.
+2. Specify the `count_file`  you need with the parameter `--matrix`.  
+
 a inference sample as :
+
 ```
 python -u infer.py --ckp=checkpoints/sample_ckp.pkl --HVG=sample_data/sample_gene_list.txt --matrix=sample_data/sample_data_matrix.txt --out=out.csv
 ```
@@ -51,7 +54,7 @@ python -u train.py
     --output = <output_dir>       # The output directory of training,the output of training mainly including checkpoint and HVG, and logs
     --gpu_id = <id>               # Not necessary, Specify the No. of the gpu if it is available
 ```
-An **training** example of using default parameters :
+An simple **training** example of using default parameters :
 ```
 python -u train.py --gpu_id=0
 ```
