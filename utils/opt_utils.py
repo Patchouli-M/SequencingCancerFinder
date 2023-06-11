@@ -107,7 +107,7 @@ def save_checkpoint(filename, alg, args):
     }
     torch.save(save_dict, os.path.join(args.output, filename))
 
-def normalize_scRNA_counts(count_file,HVG_file,HVG_num = 4096,target_sum=10000):
+def normalize_matrix_counts(count_file,HVG_file,HVG_num = 4096,target_sum=10000):
     TRAIN_GENE_LIST = HVG_file
     gene_list = pd.read_csv(TRAIN_GENE_LIST,header=None,index_col=0).iloc[:HVG_num]
     raw_df = pd.read_csv(count_file,index_col=0,sep='\t')

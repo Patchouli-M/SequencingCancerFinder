@@ -2,4 +2,4 @@ checkpoints
 utils/__pycache__
 models/__pycache__
 out.csv
-normal_train*
+normal_log*

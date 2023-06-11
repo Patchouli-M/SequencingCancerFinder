@@ -6,7 +6,6 @@ import argparse
 import torch
 import random
 import torchvision
-import PIL
 
 def get_time_str():
     return time.strftime('%m%d-%H%M')
@@ -37,14 +36,19 @@ def get_args():
     parser.add_argument('--label_str', type=str,default='label', help="num of HVG")
     parser.add_argument('--batch_size', type=int,default=10, help="batch_size")
     parser.add_argument('--NEED_ROWS', type=int,default=50, help="NEED_ROWS")
-    parser.add_argument('--infer_ckp', type=str, default='checkpoints/sample_ckp.pkl')
-    parser.add_argument('--infer_HVG', type=str, default='data/test_data/sample_gene_list.txt')
-    parser.add_argument('--infer_matrix', type=str, default='data/test_data/sample_data_matrix.txt')
-    parser.add_argument('--infer_out', type=str, default='out.csv')
-    # args = parser.parse_args(args=[])
     args = parser.parse_args()
     os.environ['CUDA_VISIBLE_DEVICES'] = str(args.gpu_id)
-    os.makedirs(args.output,exist_ok=True)
+    return args
+
+def infer_args():
+    date_str = time.strftime('%m%d')
+    parser = argparse.ArgumentParser(description='')
+    parser.add_argument('--num_classes', type=int, default=2, help="num classes")
+    parser.add_argument('--ckp', type=str, default='checkpoints/sample_ckp.pkl')
+    parser.add_argument('--HVG', type=str, default='data/test_data/sample_gene_list.txt')
+    parser.add_argument('--matrix', type=str, default='data/test_data/sample_data_matrix.txt')
+    parser.add_argument('--out', type=str, default='out.csv')
+    args = parser.parse_args()
     return args
 
 
@@ -65,5 +69,3 @@ def print_environ():
     print("\tCUDA: {}".format(torch.version.cuda))
     print("\tCUDNN: {}".format(torch.backends.cudnn.version()))
     print("\tNumPy: {}".format(np.__version__))
-    print("\tPIL: {}".format(PIL.__version__))
-

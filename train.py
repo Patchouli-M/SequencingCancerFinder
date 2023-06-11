@@ -11,6 +11,7 @@ import os
 import numpy as np 
 from data_loaders import domian_loaders
 args = args_utils.get_args()
+os.makedirs(args.output,exist_ok=True)
 args_utils.set_random_seed(args.seed)
 opt_utils.generate_genelist(args)
 
