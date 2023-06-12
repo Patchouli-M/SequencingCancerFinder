@@ -30,9 +30,6 @@ class feat_classifier(nn.Module):
         return x
 
 class VREx(nn.Module):
-
-    """the V-REx method from http://arxiv.org/abs/2003.00688"""
-
     def __init__(self, args):
         super(VREx, self).__init__()
         self.featurizer = get_fea(args)
@@ -64,7 +61,6 @@ class VREx(nn.Module):
                 nll = F.cross_entropy(logits, data[1].long())
             losses[i] = nll
         mean = losses.mean()
-        # # temp mark
         penalty = ((losses - mean) ** 2).mean()
         loss = mean + penalty_weight * penalty
         opt.zero_grad()

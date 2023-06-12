@@ -34,7 +34,7 @@ Options for **inference**:
 ```
 
 the [HVG](https://drive.google.com/file/d/1BVllGyh2DDbtmzmRS95C6k83nyaZ8YoA) and [checkpoint](https://drive.google.com/file/d/1B5upgf0FT9d-jsji_vdv5jxz8oybL1On) trained by us  are available for download.   
-If you need to use our pre-trained model for inference, please:  
+If you want to use our pretrained model for inference, please:  
 1. Download the HVG and checkpoint above and specify them with the parameter `--HVG` and `--ckp`.
 2. Specify the `count_file`  you need with the parameter `--matrix`.  
 
@@ -54,10 +54,6 @@ python -u train.py  \
     --max_epoch=<max_epoch> \     # max epoch
     --output=<output_dir> \       # The output directory of training,the output of training mainly including checkpoint and HVG, and logs
     --gpu_id=<id>                 # Not necessary, Specify the No. of the gpu if it is available
-```
-An simple **training** example of using default parameters :
-```
-python -u train.py --gpu_id=0
 ```
 
 
