@@ -10,7 +10,7 @@ torch: 1.13.1
 ```
 Install environment :
 ```
-conda env create -n scf python==3.9.16
+conda create -n scf python==3.9.16
 conda activate scf
 pip install -r requirements.txt
 ```
