@@ -17,6 +17,14 @@ pip install -r requirements.txt
 
 ## Running the Code
 ### Usage and Options:
+
+
+The `model` that were pre-trained by the TISCH database are already included here and can be used immediately for new inference by executing the following command:  
+
+```
+python -u infer.py --ckp=checkpoints/sc_pretrain_article.pkl --matrix=sample_data/sample_data_matrix.tsv --out=out.csv
+```
+
 A input matrix should be :
 
 | SYMBOL | cell1 | cell2 |  ... |cell n|
@@ -28,12 +36,8 @@ A input matrix should be :
 
 Format `tsv`, `csv` and  `h5ad` are supported.
 
+The ckp models used in article can be downloaded for [sc-RNA data](https://drive.google.com/file/d/1l05-wMbPucfC4IG4oDmT5U-TOn_YZazL/view?usp=drive_link) and [ST data](https://drive.google.com/file/d/1ci78ccgSwZStWU14PRR-OklDWRhI-8rf/view?usp=drive_link).
 
-The `model` and `HVG` that were pre-trained by the TISCH database are already included here and can be used immediately for new inference by executing the following command:  
-
-```
-python -u infer.py --ckp=checkpoints/sc_pretrain_article.pkl --matrix=sample_data/sample_data_matrix.txt --out=out.csv
-```
 The `out.csv` file contains examples of the expected output.  
 
 The purpose of the above command is to infer the malignancy status of cells in the expression matrix `sample_data/sample_data_matrix.txt`.   
@@ -83,7 +87,7 @@ python -u train.py  \
     --batch_size=<batch_size> \   # batch size
     --lr=<learning_rate> \        # learning rate
     --max_epoch=<max_epoch> \     # max epoch
-    --output=<output_dir> \       # The output directory of training, the output of training mainly including checkpoint and HVG, and logs files
+    --output=<output_dir> \       # The output directory of training, the output of training mainly including checkpoint and the gene list, and logs files
     --gpu_id=<id>                 # Not necessary, Specify the No. of the gpu if it is available
 ```
 
@@ -96,7 +100,7 @@ python -u train_saliency_map.py  \
     --batch_size=<batch_size> \   # batch size
     --lr=<learning_rate> \        # learning rate
     --max_epoch=<max_epoch> \     # max epoch
-    --output=<output_dir> \       # The output directory of training, the output of training mainly including checkpoint and HVG, and logs files
+    --output=<output_dir> \       # The output directory of training, the output of training mainly including checkpoint and the gene list, and logs files
     --gpu_id=<id>                 # Not necessary, Specify the No. of the gpu if it is available
 ```
 
