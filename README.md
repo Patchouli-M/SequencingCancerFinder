@@ -80,12 +80,10 @@ Options for **inference**:
   --matrix  input data for which predictions need to be made, an example is sample_data/sample_data_matrix.txt
   --out     output file
 ```
-Additionally, a pre-trained model trained with 476,562 cells can also be [downloaded](https://drive.google.com/file/d/1v09bMQ5eO7YWXi6TKxPn4OZGj2rau_OE/view?usp=drive_link), and more pretrained models are being updated.
-
+Additionally, a pre-trained model trained with 476,562 cells can also be [downloaded](https://drive.google.com/file/d/1v09bMQ5eO7YWXi6TKxPn4OZGj2rau_OE/view?usp=drive_link), and more pretrained models are being updated.  
+  
 ---
-
 ---
-
 
 If you want to **train**, please run the command:
 ```
