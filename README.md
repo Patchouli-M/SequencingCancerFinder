@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ```
 
 ## Running the Code
-### Usage and Options:
+### Usage and Options - Inference
 
 
 A input matrix should be :
@@ -58,7 +58,7 @@ The purpose of the above command is to infer the malignancy status of cells in t
   
 This is a sample dataset consisting of 10 cancer cell lines and 10 healthy human peripheral blood cells, and its output should typically appear as follows:  
 
-<p align = "center">  
+
 
 | sample | predict |
 | :----:| :----: |
@@ -67,7 +67,6 @@ This is a sample dataset consisting of 10 cancer cell lines and 10 healthy human
 |...|...|
 |Lib90_00009|1|  
 
-</p>
 
 If you wish to perform inference on your own dataset, simply replace `sample_data/sample_data_matrix.txt` with your own expression matrix.
 
@@ -76,7 +75,7 @@ More usage for **inference**:
 ```
 python -u infer.py \     
     --ckp=<ckp_file> \   # path for pretrained model
-    --matrix=<data_file> \ # path for data, format `tsv`, `csv` and  `h5ad` are supported. 
+    --matrix=<data_file> \ # path for data, format "tsv", "csv" and  "h5ad" are supported. 
     --out=<output_file> \ # out path
     --threshold=<threshold> # threshold of inference, default=0.5. Recommended 0.5 for use on scRNA, 10x Visium, legacy ST and slide-seq data. Recommended 0.9766 for MERFISH data
 ```
@@ -85,6 +84,7 @@ Additionally, a pre-trained model trained with 476,562 cells can also be [downlo
   
 ---
 ---
+### Usage and Options - Training and interpretability
 
 If you want to **train**, please run the command:
 ```
@@ -97,9 +97,10 @@ If you want to use the interpretability module, please run the command:
 ```
 python -u train_saliency_map.py
 ```
-There is an output sample in the folder `sample_result_saliency`.  
-
+There is an output sample in the folder `sample_result_saliency` : 
+<p align = "center">  
 <img src="sample_result_saliency/saliency_map.png" width=300>  
+</p>  
 
 More usage for **training**:
 ```
