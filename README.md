@@ -83,7 +83,7 @@ python -u infer.py \
 
 Additionally, a pre-trained model trained with 476,562 cells from 13 tissues can also be [downloaded](https://drive.google.com/file/d/1v09bMQ5eO7YWXi6TKxPn4OZGj2rau_OE/view?usp=drive_link). Its internal performance is as follows. 
 
-<img src="sample_data/additional.jpg" > 
+<img src="sample_data/additional.png" > 
 
 And more pre-trained models will be updated in the future.
 
