@@ -36,7 +36,7 @@ A input matrix should be :
 
 
 
-Format `tsv`, `csv` and  `h5ad` are supported.
+`tsv`, `csv` and  `h5ad` format are supported.
 
 
 It can be used for new inference by executing the following command:  
@@ -69,14 +69,14 @@ This is a sample dataset consisting of 10 cancer cell lines and 10 healthy human
  
 
 
-If you wish to perform inference on your own dataset, simply replace `sample_data/sample_data_matrix.txt` with your own expression matrix.
+If you wish to perform inference on your own dataset, simply replace `sample_data/sample_data_matrix.txt` with your own expression matrix. `tsv`, `csv` and  `h5ad` format are supported.
 
 
 More usage for **inference**:
 ```
 python -u infer.py \     
     --ckp=<ckp_file> \   # path for pre-trained model
-    --matrix=<data_file> \ # path for data, format "tsv", "csv" and  "h5ad" are supported. 
+    --matrix=<data_file> \ # path for data, "tsv", "csv" and  "h5ad" format are supported. 
     --out=<output_file> \ # out path
     --threshold=<threshold> # threshold of inference, default=0.5. Recommended to use 0.5 for sc-RNA, 10x Visium, legacy ST and slide-seq data. Recommended to use 0.9766 for MERFISH data.
 ```
