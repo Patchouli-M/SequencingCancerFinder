@@ -87,10 +87,10 @@ Additionally, a pre-trained model trained with 476,562 cells can also be [downlo
   
 ---
 ---
-### Usage and Options - Interpretability and Training
+### Usage and Options - Interpretability and Training  
 
-
-If you want to use the **interpretability** module, to train with interpretability please run the command:
+ 
+If you want to use the **interpretability** module, to train **with** interpretability please run the command:
 ```
 python -u train_saliency_map.py
 ```
@@ -113,7 +113,7 @@ python -u train_saliency_map.py  \
 ```
 
 
-If you want to **train** a pretrained model for inference, please run the command:  
+If you want to **train**  **without** interpretability for inference, please run the command:  
 ```
 python -u train.py
 ```
