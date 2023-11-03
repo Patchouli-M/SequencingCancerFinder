@@ -10,9 +10,11 @@ import glob
 import os
 import numpy as np 
 from data_loaders import domian_loaders
+
 # get parameters for training
 args = args_utils.get_args()
 os.makedirs(args.output,exist_ok=True)
+
 # get model
 args_utils.set_random_seed(args.seed)
 args.HVG_list = opt_utils.generate_genelist(args)
@@ -44,6 +46,7 @@ for epoch in range(args.max_epoch):
         print(step_vals,file=f_loss_io)
     algorithm.eval()
     algorithm.cpu()
+
     # eval acc in training 
     for idx,loader_idx in enumerate(val_loaders):
         acc = opt_utils.accuracy(algorithm,val_loaders[loader_idx])
@@ -56,6 +59,7 @@ for epoch in range(args.max_epoch):
     print(f'epoch={epoch}',end='\n')    
     
     print(step_vals)
+    
     # save pretrained model
     opt_utils.save_checkpoint(f'model_epoch{epoch}.pkl', algorithm, args)
 f_val_io.close()

@@ -12,10 +12,12 @@ import numpy as np
 from data_loaders import domian_loaders
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 # get parameters for training
 args = args_utils.get_args()
 args.output = args.output.replace('normal','saliency')
 os.makedirs(args.output,exist_ok=True)
+
 # get model
 args_utils.set_random_seed(args.seed)
 args.HVG_list = opt_utils.generate_genelist(args)
@@ -52,6 +54,7 @@ for epoch in range(args.max_epoch):
             grad_list.append(single_domain[0].grad.data.abs().numpy())
     algorithm.eval()
     algorithm.cpu()
+
     # eval acc in training 
     for idx,loader_idx in enumerate(val_loaders):
         acc = opt_utils.accuracy(algorithm,val_loaders[loader_idx])
@@ -63,6 +66,7 @@ for epoch in range(args.max_epoch):
     f_val_io.flush()   
     print(f'epoch={epoch}',end='\n')    
     print(step_vals)
+    
     # save grad
     epoch_total_grad = np.concatenate(grad_list,axis=0).sum(axis=0)
     epoch_sum_grad.append(epoch_total_grad.reshape(-1,epoch_total_grad.shape[0]))

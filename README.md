@@ -87,6 +87,14 @@ python -u train.py
 
 By default, the preceding command will use the data within `data/train/*` as from the training domain and `data/val/*` as from the validation domain for training.
 
+If you want to use the interpretability module, please run the command:
+```
+python -u train_saliency_map.py
+```
+There is an output sample in the folder `sample_result_saliency`.  
+
+
+
 More usage for **training**:
 ```
 python -u train.py  \
