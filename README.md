@@ -29,12 +29,12 @@ A input matrix should be :
 
 <p align = "center">  
 
-| SYMBOL | cell1 | cell2 |  ... |cell n|
+| SYMBOL | Cell 1 | Cell 2 |  ... |Cell n|
 | :----:| :----: | :----: |  :----: | :----: | 
-|GENE 1|1|0|...|0|  
-|GENE 2|0|0|...|1|
+|Gene 1|1|0|...|0|  
+|Gene 2|0|0|...|1|
 |...|...|...|...|...|
-|GENE n|0|0|...|0|
+|Gene n|0|0|...|0|
 
 </p>  
 
@@ -74,10 +74,11 @@ If you wish to perform inference on your own dataset, simply replace `sample_dat
 
 More usage for **inference**:
 ```
-python -u infer.py \
-    --ckp=<ckp_file> \
-    --matrix=<data_file> \
-    --out=<output_file>
+python -u infer.py \     
+    --ckp=<ckp_file> \   # path for pretrained model
+    --matrix=<data_file> \ # path for data, format `tsv`, `csv` and  `h5ad` are supported. 
+    --out=<output_file> \ # out path
+    --threshold=<threshold> # threshold of inference, default=0.5. Recommended 0.5 for use on scRNA, 10x Visium, legacy ST and slide-seq data. Recommended 0.9766 for MERFISH data
 ```
 
 Options for **inference**:
