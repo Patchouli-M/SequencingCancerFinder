@@ -81,12 +81,6 @@ python -u infer.py \
     --threshold=<threshold> # threshold of inference, default=0.5. Recommended 0.5 for use on scRNA, 10x Visium, legacy ST and slide-seq data. Recommended 0.9766 for MERFISH data
 ```
 
-Options for **inference**:
-```
-  --ckp     checkpoint file of pretrained model
-  --matrix  input data for which predictions need to be made, an example is sample_data/sample_data_matrix.txt
-  --out     output file
-```
 Additionally, a pre-trained model trained with 476,562 cells can also be [downloaded](https://drive.google.com/file/d/1v09bMQ5eO7YWXi6TKxPn4OZGj2rau_OE/view?usp=drive_link), and more pretrained models are being updated.  
   
 ---
