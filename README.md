@@ -89,21 +89,34 @@ Additionally, a pre-trained model trained with 476,562 cells can also be [downlo
 ---
 ### Usage and Options - Training and interpretability
 
-If you want to **train**, please run the command:
-```
-python -u train.py
-```
 
+If you want to use the **interpretability** module, please run the command:
+```
+python -u saliency_map.py
+```
 By default, the preceding command will use the data within `data/train/*` as from the training domain and `data/val/*` as from the validation domain for training.
 
-If you want to use the interpretability module, please run the command:
-```
-python -u train_saliency_map.py
-```
 There is an output sample in the folder `sample_result_saliency` : 
 
 <img src="sample_result_saliency/saliency_map.png" width=300>  
 
+More usage for **interpretability**:
+```
+python -u saliency_map.py  \
+    --train_dir=<train_dir> \     # Directory of training data
+    --val_dir=<val_dir> \         # Directory of val data
+    --batch_size=<batch_size> \   # batch size
+    --lr=<learning_rate> \        # learning rate
+    --max_epoch=<max_epoch> \     # max epoch
+    --output=<output_dir> \       # The output directory, including the salience of genes, and the top 20 genes.
+    --gpu_id=<id>                 # Not necessary, Specify the No. of the gpu if it is available
+```
+
+
+If you want to **train** a pretrained model for inference, please run the command:  
+```
+python -u train.py
+```
 
 More usage for **training**:
 ```
@@ -113,22 +126,10 @@ python -u train.py  \
     --batch_size=<batch_size> \   # batch size
     --lr=<learning_rate> \        # learning rate
     --max_epoch=<max_epoch> \     # max epoch
-    --output=<output_dir> \       # The output directory of training, the output of training mainly including checkpoint and the gene list, and logs files
+    --output=<output_dir> \       # The output directory of training, including checkpoint and the gene list, and logs files
     --gpu_id=<id>                 # Not necessary, Specify the No. of the gpu if it is available
 ```
 
-
-More usage for **interpretability**:
-```
-python -u train_saliency_map.py  \
-    --train_dir=<train_dir> \     # Directory of training data
-    --val_dir=<val_dir> \         # Directory of val data
-    --batch_size=<batch_size> \   # batch size
-    --lr=<learning_rate> \        # learning rate
-    --max_epoch=<max_epoch> \     # max epoch
-    --output=<output_dir> \       # The output directory of training, the output of training mainly including checkpoint and the gene list, and logs files
-    --gpu_id=<id>                 # Not necessary, Specify the No. of the gpu if it is available
-```
 
 
 
