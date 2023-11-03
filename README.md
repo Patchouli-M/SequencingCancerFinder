@@ -81,8 +81,12 @@ python -u infer.py \
     --threshold=<threshold> # threshold of inference, default=0.5. Recommended to use 0.5 for sc-RNA, 10x Visium, legacy ST and slide-seq data. Recommended to use 0.9766 for MERFISH data.
 ```
 
-Additionally, a pre-trained model trained with 476,562 cells can also be [downloaded](https://drive.google.com/file/d/1v09bMQ5eO7YWXi6TKxPn4OZGj2rau_OE/view?usp=drive_link), and more pre-trained models are being updated.  
-  
+Additionally, a pre-trained model trained with 476,562 cells from 13 tissues can also be [downloaded](https://drive.google.com/file/d/1v09bMQ5eO7YWXi6TKxPn4OZGj2rau_OE/view?usp=drive_link). Its internal performance is as follows. 
+
+<img src="sample_data/additional.png" width=300>  
+
+And more pre-trained models will be updated in the future.
+
 ---
 ---
 ### Usage and Options - Interpretability and Training  
