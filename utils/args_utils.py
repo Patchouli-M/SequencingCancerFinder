@@ -35,7 +35,7 @@ def get_args():
     parser.add_argument('--schusech', type=str, default='cos')
     parser.add_argument('--seed', type=int, default=0)
     parser.add_argument('--gpu_id', type=int, default=None, help="device id to run")
-    parser.add_argument('--num_classes', type=int, default=2, help="number classes")
+    parser.add_argument('--num_classes', type=int, default=2, help="number of classes")
     parser.add_argument('--weight_decay', type=float, default=5e-4)
     parser.add_argument('--momentum', type=float,default=0.9, help='for optimizer')
     parser.add_argument('--lr_decay', type=float, default=0.75, help='for sgd')
@@ -69,7 +69,9 @@ def infer_args():
     parser.add_argument('--num_classes', type=int, default=2, help="number of classes")
     parser.add_argument('--ckp', type=str, default='checkpoints/sc_pretrain_article.pkl',help="path for pretrained model")
     parser.add_argument('--matrix', type=str, default='sample_data/sample_data_matrix.tsv',help="path for data(tsv)")
+    # test for csv
     # parser.add_argument('--matrix', type=str, default='sample_data/sample_data_matrix.csv',help="path for data(csv)")
+    # test for h5ad
     # parser.add_argument('--matrix', type=str, default='sample_data/sample_data_adata.h5ad,help="path for data(h5ad)')
     parser.add_argument('--threshold', type=float, default=0.5,help="threshold of inference")
     parser.add_argument('--out', type=str, default='out.csv',help="out path")
