@@ -87,12 +87,12 @@ Additionally, a pre-trained model trained with 476,562 cells can also be [downlo
   
 ---
 ---
-### Usage and Options - Training and interpretability
+### Usage and Options - Interpretability and Training
 
 
-If you want to use the **interpretability** module, please run the command:
+If you want to use the **interpretability** module, to train with interpretability please run the command:
 ```
-python -u saliency_map.py
+python -u train_saliency_map.py
 ```
 By default, the preceding command will use the data within `data/train/*` as from the training domain and `data/val/*` as from the validation domain for training.
 
@@ -102,7 +102,7 @@ There is an output sample in the folder `sample_result_saliency` :
 
 More usage for **interpretability**:
 ```
-python -u saliency_map.py  \
+python -u train_saliency_map.py  \
     --train_dir=<train_dir> \     # Directory of training data
     --val_dir=<val_dir> \         # Directory of val data
     --batch_size=<batch_size> \   # batch size
