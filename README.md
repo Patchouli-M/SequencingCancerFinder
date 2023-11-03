@@ -44,6 +44,8 @@ python -u infer.py --ckp=checkpoints/sc_pretrain_article.pkl --matrix=sample_dat
 The `out.csv` file contains examples of the expected output.  
 
 The purpose of the above command is to infer the malignancy status of cells in the expression matrix `sample_data/sample_data_matrix.tsv`.   
+  
+  
 This is a sample dataset consisting of 10 cancer cell lines and 10 healthy human peripheral blood cells, and its output should typically appear as follows:  
 
 
@@ -71,7 +73,7 @@ Options for **inference**:
   --matrix  input data for which predictions need to be made, an example is sample_data/sample_data_matrix.txt
   --out     output file
 ```
-Additionally, a pre-trained model trained with 476,562 cells can also be [downloaded](https://drive.google.com/file/d/1v09bMQ5eO7YWXi6TKxPn4OZGj2rau_OE/view?usp=drive_link), and more pre trained models are being updated.
+Additionally, a pre-trained model trained with 476,562 cells can also be [downloaded](https://drive.google.com/file/d/1v09bMQ5eO7YWXi6TKxPn4OZGj2rau_OE/view?usp=drive_link), and more pretrained models are being updated.
 
 ---
 
