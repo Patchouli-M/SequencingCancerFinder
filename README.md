@@ -44,14 +44,15 @@ It can be used for new inference by executing the following command:
 ```
 python -u infer.py --ckp=checkpoints/sc_pretrain_article.pkl --matrix=sample_data/sample_data_matrix.tsv --out=out.csv
 ```
+
+The purpose of the above command is to infer the malignancy status of cells in the expression matrix `sample_data/sample_data_matrix.tsv`.   
+
 The parameter `ckp` denotes the checkpoints of pre-trained model used for inference.
 The checkpoints used in article can be downloaded for [sc-RNA data](https://drive.google.com/file/d/1l05-wMbPucfC4IG4oDmT5U-TOn_YZazL/view?usp=drive_link) and [ST data](https://drive.google.com/file/d/1ci78ccgSwZStWU14PRR-OklDWRhI-8rf/view?usp=drive_link).
 
 
 The `out.csv` file contains examples of the expected output.  
 
-The purpose of the above command is to infer the malignancy status of cells in the expression matrix `sample_data/sample_data_matrix.tsv`.   
-  
   
 This is a sample dataset consisting of 10 cancer cell lines and 10 healthy human peripheral blood cells, and its output should typically appear as follows:  
 
@@ -77,7 +78,7 @@ python -u infer.py \
     --ckp=<ckp_file> \   # path for pre-trained model
     --matrix=<data_file> \ # path for data, format "tsv", "csv" and  "h5ad" are supported. 
     --out=<output_file> \ # out path
-    --threshold=<threshold> # threshold of inference, default=0.5. Recommended 0.5 for use on scRNA, 10x Visium, legacy ST and slide-seq data. Recommended 0.9766 for MERFISH data
+    --threshold=<threshold> # threshold of inference, default=0.5. Recommended to use 0.5 for sc-RNA, 10x Visium, legacy ST and slide-seq data. Recommended to use 0.9766 for MERFISH data.
 ```
 
 Additionally, a pre-trained model trained with 476,562 cells can also be [downloaded](https://drive.google.com/file/d/1v09bMQ5eO7YWXi6TKxPn4OZGj2rau_OE/view?usp=drive_link), and more pre-trained models are being updated.  
