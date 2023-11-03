@@ -19,12 +19,12 @@ os.makedirs(args.output,exist_ok=True)
 args_utils.set_random_seed(args.seed)
 args.HVG_list = opt_utils.generate_genelist(args)
 
-# get dataloader 
+# get dataloader for training
 train_loaders = domian_loaders.train_domian_loaders_l(args)
 print(len(train_loaders))
 val_loaders = domian_loaders.val_domian_loaders_l(args)
 
-# for logs
+# i/o for log output
 f_loss_io = open( os.path.join(args.output,f'{args.logs_name}_loss.txt'),'w')
 f_val_io = open( os.path.join(args.output,f'{args.logs_name}_val.txt'),'w')
 [print(_,file=f_val_io,end='\t') if idx!=len(val_loaders)-1 else print(_,file=f_val_io,end='\n') for idx, _ in enumerate(val_loaders) ]
@@ -42,12 +42,13 @@ for epoch in range(args.max_epoch):
         minibatches_device = [(data) for data in single_train_minibatches]      
         opt = opt_utils.get_optimizer(algorithm, args)
         sch = opt_utils.get_scheduler(opt, args)
+        # back-propagation
         step_vals = algorithm.update(minibatches_device, opt, sch)
         print(step_vals,file=f_loss_io)
     algorithm.eval()
     algorithm.cpu()
 
-    # eval acc in training 
+    # evaluate accuracy during training
     for idx,loader_idx in enumerate(val_loaders):
         acc = opt_utils.accuracy(algorithm,val_loaders[loader_idx])
         if idx!=len(val_loaders)-1:
@@ -57,7 +58,6 @@ for epoch in range(args.max_epoch):
         print(f'{acc:.4f}',end='\t')
     f_val_io.flush()    
     print(f'epoch={epoch}',end='\n')    
-    
     print(step_vals)
     
     # save pretrained model

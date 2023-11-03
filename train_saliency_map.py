@@ -13,7 +13,7 @@ from data_loaders import domian_loaders
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# get parameters for training
+# get arguments for training
 args = args_utils.get_args()
 args.output = args.output.replace('normal','saliency')
 os.makedirs(args.output,exist_ok=True)
@@ -22,11 +22,11 @@ os.makedirs(args.output,exist_ok=True)
 args_utils.set_random_seed(args.seed)
 args.HVG_list = opt_utils.generate_genelist(args)
 
-# get dataloader 
+# get dataloader for training
 train_loaders = domian_loaders.train_domian_loaders_l(args)
 val_loaders = domian_loaders.val_domian_loaders_l(args)
 
-# for logs
+# i/o for log output
 f_loss_io = open( os.path.join(args.output,f'{args.logs_name}_loss.txt'),'w')
 f_val_io = open( os.path.join(args.output,f'{args.logs_name}_val.txt'),'w')
 [print(_,file=f_val_io,end='\t') if idx!=len(val_loaders)-1 else print(_,file=f_val_io,end='\n') for idx, _ in enumerate(val_loaders) ]
@@ -48,6 +48,7 @@ for epoch in range(args.max_epoch):
         minibatches_device = [(data) for data in single_train_minibatches]      
         opt = opt_utils.get_optimizer(algorithm, args)
         sch = opt_utils.get_scheduler(opt, args)
+        # back-propagation
         step_vals = algorithm.update(minibatches_device, opt, sch)
         print(step_vals,file=f_loss_io) 
         for single_domain in single_train_minibatches:
@@ -55,7 +56,7 @@ for epoch in range(args.max_epoch):
     algorithm.eval()
     algorithm.cpu()
 
-    # eval acc in training 
+    # evaluate accuracy during training
     for idx,loader_idx in enumerate(val_loaders):
         acc = opt_utils.accuracy(algorithm,val_loaders[loader_idx])
         if idx!=len(val_loaders)-1:
@@ -67,7 +68,7 @@ for epoch in range(args.max_epoch):
     print(f'epoch={epoch}',end='\n')    
     print(step_vals)
     
-    # save grad
+    # save the gradient values.
     epoch_total_grad = np.concatenate(grad_list,axis=0).sum(axis=0)
     epoch_sum_grad.append(epoch_total_grad.reshape(-1,epoch_total_grad.shape[0]))
     grad_df = pd.DataFrame(np.concatenate(epoch_sum_grad,axis=0),columns=args.HVG_list)
@@ -78,6 +79,7 @@ for epoch in range(args.max_epoch):
     grad_df.iloc[:20].loc[:,'mean'].to_csv(os.path.join(args.output,f'top_20_gene_list_{epoch}.txt'),header=None)
     grad_df = grad_df.drop(columns='mean')
     plt.figure(figsize=(10,10))
+    # save the figure
     sns.heatmap(grad_df.iloc[:20],cmap='coolwarm')
     plt.savefig(os.path.join(args.output,f'saliency_map.png'),bbox_inches='tight')
 
