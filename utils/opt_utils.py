@@ -42,7 +42,7 @@ def save_checkpoint(filename, alg, args):
 
     Args:
         filename: Name of the target file to be saved
-        alg: Neural network models that need to be saved
+        alg: neural network models that need to be saved
         args: training parameters
 
     Returns:
