@@ -100,7 +100,7 @@ By default, the preceding command will use the data within `data/train/*` as fro
 
 There is an output sample in the folder `sample_result_saliency` : 
 
-<img src="sample_result_saliency/saliency_map.png" width=300>  
+<img src="sample_result_saliency/saliency_map.png">  
 
 More usage for **interpretability**:
 ```
