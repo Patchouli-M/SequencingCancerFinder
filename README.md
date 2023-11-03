@@ -100,9 +100,7 @@ python -u train_saliency_map.py
 ```
 There is an output sample in the folder `sample_result_saliency`.  
 
-<p align = "center">
 <img src="sample_result_saliency/saliency_map.png" width=300>  
-</p>
 
 More usage for **training**:
 ```
