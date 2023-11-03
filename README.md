@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
 A input matrix should be :
 
-<p align = "center">  
+<div class="center">
 
 | SYMBOL | Cell 1 | Cell 2 |  ... |Cell n|
 | :----:| :----: | :----: |  :----: | :----: | 
@@ -36,7 +36,7 @@ A input matrix should be :
 |...|...|...|...|...|
 |Gene n|0|0|...|0|
 
-</p>  
+</div>
 
 Format `tsv`, `csv` and  `h5ad` are supported.
 
