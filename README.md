@@ -113,7 +113,7 @@ python -u train_saliency_map.py  \
 ```
 
 
-If you want to **train**  **without** interpretability for inference, please run the command:  
+If you want to **train**  **without** interpretability, to train a pretrained model for inference, please run the command:  
 ```
 python -u train.py
 ```
