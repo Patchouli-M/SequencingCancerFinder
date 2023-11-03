@@ -1,4 +1,8 @@
 
+# 	Cancer-Finder: Domain generalization enables general cancer cell annotation in single-cell and spatial transcriptomics  
+
+## Abstract
+	Single-cell and spatial transcriptome sequencing, two recently optimized transcrip-tome sequencing methods, are increasingly used to study cancer and related diseases. Cell annotation, particularly for malignant cell annotation, is essential and crucial for in-depth analyses in these studies. However, current algorithms lack accuracy and gen-eralization, making it difficult to consistently and rapidly infer malignant cells from pan-cancer data. To address this issue, we present Cancer-Finder, a domain generaliza-tion-based deep-learning algorithm that can rapidly identify malignant cells in single-cell data with an average accuracy of 95.16%. More importantly, by replacing the single-cell training data with spatial transcriptomic (ST) datasets, Cancer-Finder can accurately identify malignant spots on spatial slides. Applying Cancer-Finder to 5 ccRCC ST sam-ples, Cancer-Finder demonstrated an excellent ability to identify malignant spots and identified a gene signature consisting of 10 genes that were significantly co-localized and enriched at the tumor-normal interface and have a strong correlation with the prog-nosis of ccRCC patients. In conclusion, Cancer-Finder is an efficient and extensible tool for malignant cell annotation.
 ## Set Up Environment
 
 Prerequisites:
