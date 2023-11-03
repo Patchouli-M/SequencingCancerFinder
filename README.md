@@ -1,3 +1,12 @@
+<style>
+.center 
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
 
 # 	Cancer-Finder: Domain generalization enables general cancer cell annotation in single-cell and spatial transcriptomics  
 
@@ -59,6 +68,7 @@ The purpose of the above command is to infer the malignancy status of cells in t
 This is a sample dataset consisting of 10 cancer cell lines and 10 healthy human peripheral blood cells, and its output should typically appear as follows:  
 
 
+<div class="center">  
 
 | sample | predict |
 | :----:| :----: |
@@ -66,6 +76,8 @@ This is a sample dataset consisting of 10 cancer cell lines and 10 healthy human
 |AAACCCAGTATCGTAC-1|0|
 |...|...|
 |Lib90_00009|1|  
+
+</div>  
 
 
 If you wish to perform inference on your own dataset, simply replace `sample_data/sample_data_matrix.txt` with your own expression matrix.
