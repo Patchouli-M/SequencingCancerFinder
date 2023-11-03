@@ -39,15 +39,14 @@ A input matrix should be :
 Format `tsv`, `csv` and  `h5ad` are supported.
 
 
-
-The pretrained models used in article can be downloaded for [sc-RNA data](https://drive.google.com/file/d/1l05-wMbPucfC4IG4oDmT5U-TOn_YZazL/view?usp=drive_link) and [ST data](https://drive.google.com/file/d/1ci78ccgSwZStWU14PRR-OklDWRhI-8rf/view?usp=drive_link).
-
-
 It can be used for new inference by executing the following command:  
 
 ```
 python -u infer.py --ckp=checkpoints/sc_pretrain_article.pkl --matrix=sample_data/sample_data_matrix.tsv --out=out.csv
 ```
+The parameter `ckp` denotes the checkpoints of pre-trained model used for inference.
+The checkpoints used in article can be downloaded for [sc-RNA data](https://drive.google.com/file/d/1l05-wMbPucfC4IG4oDmT5U-TOn_YZazL/view?usp=drive_link) and [ST data](https://drive.google.com/file/d/1ci78ccgSwZStWU14PRR-OklDWRhI-8rf/view?usp=drive_link).
+
 
 The `out.csv` file contains examples of the expected output.  
 
@@ -75,13 +74,13 @@ If you wish to perform inference on your own dataset, simply replace `sample_dat
 More usage for **inference**:
 ```
 python -u infer.py \     
-    --ckp=<ckp_file> \   # path for pretrained model
+    --ckp=<ckp_file> \   # path for pre-trained model
     --matrix=<data_file> \ # path for data, format "tsv", "csv" and  "h5ad" are supported. 
     --out=<output_file> \ # out path
     --threshold=<threshold> # threshold of inference, default=0.5. Recommended 0.5 for use on scRNA, 10x Visium, legacy ST and slide-seq data. Recommended 0.9766 for MERFISH data
 ```
 
-Additionally, a pre-trained model trained with 476,562 cells can also be [downloaded](https://drive.google.com/file/d/1v09bMQ5eO7YWXi6TKxPn4OZGj2rau_OE/view?usp=drive_link), and more pretrained models are being updated.  
+Additionally, a pre-trained model trained with 476,562 cells can also be [downloaded](https://drive.google.com/file/d/1v09bMQ5eO7YWXi6TKxPn4OZGj2rau_OE/view?usp=drive_link), and more pre-trained models are being updated.  
   
 ---
 ---
@@ -111,7 +110,7 @@ python -u train_saliency_map.py  \
 ```
 
 
-If you want to **train**  **without** interpretability, to train a pretrained model for inference, please run the command:  
+If you want to **train**  **without** interpretability, to train a pre-trained model for inference, please run the command:  
 ```
 python -u train.py
 ```
