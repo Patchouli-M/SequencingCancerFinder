@@ -69,7 +69,8 @@ This is a sample dataset consisting of 10 cancer cell lines and 10 healthy human
  
 
 
-If you wish to perform inference on your own dataset, simply replace `sample_data/sample_data_matrix.txt` with your own expression matrix. `tsv`, `csv` and  `h5ad` format are supported.
+If you wish to perform inference on your own dataset, simply replace `sample_data/sample_data_matrix.txt` with your own expression matrix.  
+ `tsv`, `csv` and  `h5ad` format are supported.
 
 
 More usage for **inference**:
