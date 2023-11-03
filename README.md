@@ -19,12 +19,6 @@ pip install -r requirements.txt
 ### Usage and Options:
 
 
-The `model` that were pre-trained by the TISCH database are already included here and can be used immediately for new inference by executing the following command:  
-
-```
-python -u infer.py --ckp=checkpoints/sc_pretrain_article.pkl --matrix=sample_data/sample_data_matrix.tsv --out=out.csv
-```
-
 A input matrix should be :
 
 | SYMBOL | cell1 | cell2 |  ... |cell n|
@@ -36,11 +30,20 @@ A input matrix should be :
 
 Format `tsv`, `csv` and  `h5ad` are supported.
 
+
+
 The ckp models used in article can be downloaded for [sc-RNA data](https://drive.google.com/file/d/1l05-wMbPucfC4IG4oDmT5U-TOn_YZazL/view?usp=drive_link) and [ST data](https://drive.google.com/file/d/1ci78ccgSwZStWU14PRR-OklDWRhI-8rf/view?usp=drive_link).
+
+
+It can be used for new inference by executing the following command:  
+
+```
+python -u infer.py --ckp=checkpoints/sc_pretrain_article.pkl --matrix=sample_data/sample_data_matrix.tsv --out=out.csv
+```
 
 The `out.csv` file contains examples of the expected output.  
 
-The purpose of the above command is to infer the malignancy status of cells in the expression matrix `sample_data/sample_data_matrix.txt`.   
+The purpose of the above command is to infer the malignancy status of cells in the expression matrix `sample_data/sample_data_matrix.tsv`.   
 This is a sample dataset consisting of 10 cancer cell lines and 10 healthy human peripheral blood cells, and its output should typically appear as follows:  
 
 
