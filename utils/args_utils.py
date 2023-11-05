@@ -51,7 +51,7 @@ def get_args():
     parser.add_argument('--label_str', type=str,default='label', help="the row label for the label in the training data")
     parser.add_argument('--batch_size', type=int,default=10, help="batch_size")
     parser.add_argument('--NEED_ROWS', type=int,default=50, help="Number of samples in one step")
-    args = parser.parse_args(args=[])
+    args = parser.parse_args()
     os.environ['CUDA_VISIBLE_DEVICES'] = str(args.gpu_id)
     return args
 
@@ -75,7 +75,7 @@ def infer_args():
     # parser.add_argument('--matrix', type=str, default='sample_data/sample_data_adata.h5ad,help="path for data(h5ad)')
     parser.add_argument('--threshold', type=float, default=0.5,help="threshold of inference")
     parser.add_argument('--out', type=str, default='out.csv',help="out path")
-    args = parser.parse_args(args=[])
+    args = parser.parse_args()
     args.HVG_list = torch.load(args.ckp)['HVG_list']
     return args
 
