@@ -47,7 +47,7 @@ def get_args():
     parser.add_argument('--genelist_outname', type=str,default='gene_list.txt', help="genelist_outname")
     parser.add_argument('--logs_name', type=str,default='train_log', help="train_log")
     parser.add_argument('--lam', type=float,default=1, help="tradeoff hyperparameter used in VREx")
-    parser.add_argument('--gene_num', type=int,default=4572, help="number of feature")
+    parser.add_argument('--gene_num', type=int,default=4572, help="number of features")
     parser.add_argument('--label_str', type=str,default='label', help="the row label for the label in the training data")
     parser.add_argument('--batch_size', type=int,default=10, help="batch_size")
     parser.add_argument('--NEED_ROWS', type=int,default=50, help="Number of samples in one step")
