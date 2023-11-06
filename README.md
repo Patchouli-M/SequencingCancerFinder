@@ -93,7 +93,7 @@ And more pre-trained models will be updated in the future.
 ### Usage and Options - Interpretability and Training  
 
  
-If you want to use the **interpretability** module, to train **with** interpretability. Please run the command:
+If you want to use the **interpretability** module, to train **with interpretability**. Please run the command:
 ```
 python -u train_saliency_map.py
 ```
