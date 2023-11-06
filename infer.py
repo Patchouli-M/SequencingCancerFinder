@@ -4,8 +4,7 @@ import pandas as pd
 from models import model
 from utils import opt_utils,args_utils
 import warnings
-import argparse
-import time
+
 warnings.filterwarnings('ignore')
 
 # get arguments for inference
