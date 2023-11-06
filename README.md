@@ -48,7 +48,7 @@ python -u infer.py --ckp=checkpoints/sc_pretrain_article.pkl --matrix=sample_dat
 The purpose of the above command is to infer the malignancy status of cells in the expression matrix `sample_data/sample_data_matrix.tsv`.   
 
 The parameter `ckp` denotes the checkpoints of pre-trained model used for inference.
-The checkpoints used in article for [sc-RNA data](https://drive.google.com/file/d/1l05-wMbPucfC4IG4oDmT5U-TOn_YZazL/view?usp=drive_link) and [ST data](https://drive.google.com/file/d/1ci78ccgSwZStWU14PRR-OklDWRhI-8rf/view?usp=drive_link) can be downloaded. 
+The checkpoints used in article for [scRNA-seq data](https://drive.google.com/file/d/1l05-wMbPucfC4IG4oDmT5U-TOn_YZazL/view?usp=drive_link) and [spatial transcriptomics (ST) data](https://drive.google.com/file/d/1ci78ccgSwZStWU14PRR-OklDWRhI-8rf/view?usp=drive_link) are available for download. 
 
 
 The `out.csv` file contains examples of the expected output.  
