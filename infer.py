@@ -15,7 +15,7 @@ algorithm = model.VREx(args)
 algorithm.load_state_dict(torch.load(args.ckp)['model_dict'])
 algorithm.eval()
 
-# get dataloader for inference
+# get dataloaders for inference
 infor_loaders = opt_utils.InferLoaders(args)
 predict_dict_res_l = []
 predict_dict = {'sample':[],'predict':[]}

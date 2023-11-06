@@ -22,7 +22,7 @@ os.makedirs(args.output,exist_ok=True)
 args_utils.set_random_seed(args.seed)
 args.HVG_list = opt_utils.generate_genelist(args)
 
-# get dataloader for training
+# get dataloaders for training
 train_loaders = domian_loaders.train_domian_loaders_l(args)
 val_loaders = domian_loaders.val_domian_loaders_l(args)
 
