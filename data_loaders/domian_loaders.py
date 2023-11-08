@@ -30,8 +30,9 @@ def train_domian_loaders_l(args,shuffle_state=True):
         elif data_spl_file.endswith('.csv'):
             raw_df = pd.read_csv(data_spl_file,index_col=0,sep=',')
         elif data_spl_file.endswith('.h5ad'):
-            raw_df = scanpy.read_h5ad(data_spl_file).to_df()
-        
+            adata = scanpy.read_h5ad(data_spl_file)
+            raw_df = adata.to_df()
+            raw_df = pd.merge(raw_df.T,pd.DataFrame(adata.var['label']),left_index=True,right_index=True,how='inner').T
         raw_df = pd.merge(gene_list,raw_df,how='left',left_index=True,right_index=True).fillna(0)
         raw_df = raw_df[~raw_df.index.duplicated()]
         raw_df = raw_df.loc[gene_list.index]
