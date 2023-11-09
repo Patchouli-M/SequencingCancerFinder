@@ -23,13 +23,13 @@ pip install -r requirements.txt
 ### Usage and Options - Inference
 
 
-A input matrix should be :
+A input count matrix should be :
 
 
 
 | SYMBOL | Cell 1 | Cell 2 |  ... |Cell n|
 | :----:| :----: | :----: |  :----: | :----: | 
-|Gene 1|1|0|...|0|  
+|Gene 1|0|2|...|0|  
 |Gene 2|0|0|...|1|
 |...|...|...|...|...|
 |Gene n|0|0|...|0|
