@@ -1,4 +1,4 @@
-# 	Cancer-Finder: Domain generalization enables general cancer cell annotation in single-cell and spatial transcriptomics  
+# 	Domain generalization enables general cancer cell annotation in single-cell and spatial transcriptomics  
 
 ## Abstract
 Single-cell and spatial transcriptome sequencing, two recently optimized transcriptome sequencing methods, are increasingly used to study cancer and related diseases. Cell annotation, particularly for malignant cell annotation, is essential and crucial for in-depth analyses in these studies. However, current algorithms lack accuracy and generalization, making it difficult to consistently and rapidly infer malignant cells from pan-cancer data. To address this issue, we present Cancer-Finder, a domain generalization-based deep learning algorithm that can rapidly identify malignant cells/spots in single-cell and spatial transcriptomics data. Additionally, Cancer-Finder integrated an interpretability module, which can utilizes a saliency map to identified important genes related to prognosis and tumor microenvironment.
@@ -102,7 +102,9 @@ python -u train_gene_set.py
 If you want to **train**  **without a gene set**, just to train a pre-trained model for inference. Please run the command:  
 ```
 python -u train.py
-```
+```  
+
+By default, the preceding command will use the data within `data/train/*` as from the training domain and `data/val/*` as from the validation domain for training.
 
 More usage for **training**:
 ```
