@@ -53,9 +53,10 @@ If you wish to perform inference on your own dataset, please replace `data_matri
 
 ---
 
-Regarding the test data, please refer to the "Data availability" section of the [article](https://www.nature.com/articles/s41467-024-46413-6).  
+
+Regarding the data (train, val and test), please refer to the "Data availability" and "Methods" section of the [article](https://www.nature.com/articles/s41467-024-46413-6).  
 The “Data Availability” section of the article provides a detailed description of the test data, including Cell line data, Peripheral Blood Mononuclear Cells (PBMC) data, and other data from patients. The corresponding test results are presented in Figure 3b.  
-The sample data in previous versions is also from the “Data Availability” section. 
+The sample test data in previous versions is also from the “Data Availability” section.    
 
 ---
 

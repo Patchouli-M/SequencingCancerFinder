@@ -165,7 +165,10 @@ class InferLoaders():
         if self.idx < self.row_len:
             step_end = int(min(self.idx + self.step_num,self.row_len))
             if self.obj_filename.endswith('.h5ad'):
-                raw_df = self.full_raw_df.iloc[:,self.idx:step_end]
+                if self.idx == 1 :
+                    raw_df = self.full_raw_df.iloc[:,0:step_end]    
+                else:
+                    raw_df = self.full_raw_df.iloc[:,self.idx:step_end]
             elif self.obj_filename.endswith('.csv'):
                 print(self.idx,step_end)
                 col_index = [self.row[0]] + self.row[self.idx:step_end]
