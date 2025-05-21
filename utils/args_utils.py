@@ -76,7 +76,7 @@ def infer_args():
     return args
 
 def create_args_from_infering(
-    matrix: str = 'data_matrix.tsv',
+    matrix = 'data_matrix.h5ad',
     num_classes: int = 2,
     ckp: str = 'checkpoints/sc_pretrain_article.pkl',
     threshold: float = 0.5,

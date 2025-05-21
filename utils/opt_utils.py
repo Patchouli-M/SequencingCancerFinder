@@ -7,6 +7,7 @@ import glob
 from torch.utils.data import TensorDataset,DataLoader
 import gc
 import csv
+import zarr
 
 def accuracy(network, loader):
     """
@@ -102,6 +103,10 @@ def generate_genelist(args):
             raw_df = pd.read_csv(file_name,index_col=0,sep=',')
         elif file_name.endswith('.h5ad'):
             raw_df = scanpy.read_h5ad(file_name).to_df()
+        elif file_name.endswith('.h5'):
+            raw_df = pd.read_hdf(file_name)
+        elif file_name.endswith('.zarr'):
+            raw_df = anndata.read_zarr(file_name).to_df()
         
         raw_df['sum'] = raw_df.sum(axis=1)
         raw_df = raw_df.sort_values(by='sum',ascending=False)
@@ -147,9 +152,13 @@ class InferLoaders():
             self.row = self.full_raw_df.columns
             self.row_len = len(self.row)
         else:
-            # Handle string path as before
-            if self.obj_filename.endswith('.h5ad'):
+            if self.obj_filename.endswith('.h5ad') or self.obj_filename.endswith('.h5'):
                 self.full_raw_df = scanpy.read_h5ad(self.obj_filename).to_df()
+                self.row = self.full_raw_df.columns
+                self.row_len = len(self.row)
+
+            elif self.obj_filename.endswith('.zarr'):
+                self.full_raw_df = anndata.read_zarr(self.obj_filename).to_df()
                 self.row = self.full_raw_df.columns
                 self.row_len = len(self.row)
 
@@ -173,8 +182,8 @@ class InferLoaders():
         if self.idx < self.row_len:
             step_end = int(min(self.idx + self.step_num,self.row_len))
             
-            if self.is_anndata or self.obj_filename.endswith('.h5ad'):
-                # Handle both AnnData object and h5ad file the same way
+            if self.is_anndata or self.obj_filename.endswith('.h5ad') or \
+                self.obj_filename.endswith('.h5') or self.obj_filename.endswith('.zarr'):
                 if self.idx == 0:
                     raw_df = self.full_raw_df.iloc[:,0:step_end]    
                 else:

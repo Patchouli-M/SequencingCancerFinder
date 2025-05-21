@@ -4,3 +4,4 @@ pandas==1.5.2
 scanpy==1.9.3
 torch==1.13.1
 torchvision==0.14.1
+zarr
