@@ -75,6 +75,73 @@ def infer_args():
     args.HVG_list = torch.load(args.ckp)['HVG_list']
     return args
 
+def create_args_from_infering(
+    matrix = 'data_matrix.h5ad',
+    num_classes: int = 2,
+    ckp: str = 'checkpoints/sc_pretrain_article.pkl',
+    threshold: float = 0.5,
+    out: str = 'out.csv',
+    lr: float = 1e-3,
+    schuse: bool = False,
+    schusech: str = 'cos',
+    seed: int = 0,
+    gpu_id: int = None,
+    weight_decay: float = 5e-4,
+    momentum: float = 0.9,
+    lr_decay: float = 0.75,
+    lr_decay1: float = 1.0,
+    lr_decay2: float = 1.0,
+    anneal_iters: int = 500,
+    max_epoch: int = 5,
+    lam: float = 1,
+    gene_num: int = 4572,
+    label_str: str = 'label',
+    batch_size: int = 10,
+    NEED_ROWS: int = 50,
+) -> argparse.Namespace:
+    """
+    Convert function arguments to an args object compatible with VREx model.
+    
+    Args:
+        All parameters from the infering function
+        
+    Returns:
+        argparse.Namespace: An args object with all the parameters set
+    """
+    args = argparse.Namespace()
+    
+    # Set all attributes from the function parameters
+    args.matrix = matrix
+    args.num_classes = num_classes
+    args.ckp = ckp
+    args.threshold = threshold
+    args.out = out
+    args.lr = lr
+    args.schuse = schuse
+    args.schusech = schusech
+    args.seed = seed
+    args.gpu_id = gpu_id
+    args.weight_decay = weight_decay
+    args.momentum = momentum
+    args.lr_decay = lr_decay
+    args.lr_decay1 = lr_decay1
+    args.lr_decay2 = lr_decay2
+    args.anneal_iters = anneal_iters
+    args.max_epoch = max_epoch
+    args.lam = lam
+    args.gene_num = gene_num
+    args.label_str = label_str
+    args.batch_size = batch_size
+    args.NEED_ROWS = NEED_ROWS
+    
+    # Load HVG_list from checkpoint if it exists
+    if os.path.exists(ckp):
+        checkpoint = torch.load(ckp)
+        args.HVG_list = checkpoint.get('HVG_list', [])
+    else:
+        args.HVG_list = []
+    
+    return args
 
 def set_random_seed(seed=0):
     """

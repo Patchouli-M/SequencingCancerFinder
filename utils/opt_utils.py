@@ -7,6 +7,7 @@ import glob
 from torch.utils.data import TensorDataset,DataLoader
 import gc
 import csv
+import zarr
 
 def accuracy(network, loader):
     """
@@ -102,6 +103,10 @@ def generate_genelist(args):
             raw_df = pd.read_csv(file_name,index_col=0,sep=',')
         elif file_name.endswith('.h5ad'):
             raw_df = scanpy.read_h5ad(file_name).to_df()
+        elif file_name.endswith('.h5'):
+            raw_df = pd.read_hdf(file_name)
+        elif file_name.endswith('.zarr'):
+            raw_df = anndata.read_zarr(file_name).to_df()
         
         raw_df['sum'] = raw_df.sum(axis=1)
         raw_df = raw_df.sort_values(by='sum',ascending=False)
@@ -135,37 +140,51 @@ class InferLoaders():
     """
     def __init__(self,args,step_num = 1e4):
         self.obj_filename = args.matrix
-        self.idx = 1
+        self.idx = 0
         self.step_num = step_num
         self.args = args
+        self.is_anndata = isinstance(self.obj_filename, anndata.AnnData)
+        
     def __iter__(self):
-    
-        if self.obj_filename.endswith('.h5ad'):
-            self.full_raw_df = scanpy.read_h5ad(self.obj_filename).to_df()
+        if self.is_anndata:
+            # Handle AnnData object directly
+            self.full_raw_df = self.obj_filename.to_df()
             self.row = self.full_raw_df.columns
             self.row_len = len(self.row)
+        else:
+            if self.obj_filename.endswith('.h5ad') or self.obj_filename.endswith('.h5'):
+                self.full_raw_df = scanpy.read_h5ad(self.obj_filename).to_df()
+                self.row = self.full_raw_df.columns
+                self.row_len = len(self.row)
 
-        elif self.obj_filename.endswith('.csv'):
-            with open(self.obj_filename,'r') as csv_file:
-                reader = csv.reader(csv_file,delimiter=',')
-                self.row = reader.__iter__().__next__()
-            self.row_len = len(self.row)
-            
+            elif self.obj_filename.endswith('.zarr'):
+                self.full_raw_df = anndata.read_zarr(self.obj_filename).to_df()
+                self.row = self.full_raw_df.columns
+                self.row_len = len(self.row)
 
-        elif self.obj_filename.endswith('.tsv'):
-            with open(self.obj_filename,'r') as csv_file:
-                reader = csv.reader(csv_file,delimiter='\t')
-                self.row = reader.__iter__().__next__()
-            self.row_len = len(self.row)
-        else :
-            raise ValueError("Unrecognized Formats")
-        self.idx = 1
+            elif self.obj_filename.endswith('.csv'):
+                with open(self.obj_filename,'r') as csv_file:
+                    reader = csv.reader(csv_file,delimiter=',')
+                    self.row = reader.__iter__().__next__()
+                self.row_len = len(self.row)
+                
+            elif self.obj_filename.endswith('.tsv'):
+                with open(self.obj_filename,'r') as csv_file:
+                    reader = csv.reader(csv_file,delimiter='\t')
+                    self.row = reader.__iter__().__next__()
+                self.row_len = len(self.row)
+            else:
+                raise ValueError("Unrecognized Formats")
+        self.idx = 0 
         return self
+
     def __next__(self):
         if self.idx < self.row_len:
             step_end = int(min(self.idx + self.step_num,self.row_len))
-            if self.obj_filename.endswith('.h5ad'):
-                if self.idx == 1 :
+            
+            if self.is_anndata or self.obj_filename.endswith('.h5ad') or \
+                self.obj_filename.endswith('.h5') or self.obj_filename.endswith('.zarr'):
+                if self.idx == 0:
                     raw_df = self.full_raw_df.iloc[:,0:step_end]    
                 else:
                     raw_df = self.full_raw_df.iloc[:,self.idx:step_end]
@@ -179,6 +198,7 @@ class InferLoaders():
                 raw_df = pd.read_csv(self.obj_filename,index_col=0,usecols=col_index,sep='\t')
             else:
                 raise ValueError("Unrecognized Formats")
+                
             input_data = normalize_matrix_counts(raw_df,self.args.HVG_list)
             input_set = TensorDataset(torch.from_numpy(input_data.values).float())
             input_loader = DataLoader(dataset=input_set,batch_size = len(input_set)) 
@@ -187,9 +207,9 @@ class InferLoaders():
             gc.collect()
             return input_data,input_loader
 
-        else :
+        else:
             raise StopIteration
-        
+
 def get_params(alg, args):
     """
     Used to get weights in the network

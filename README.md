@@ -36,8 +36,14 @@ A input count matrix should be :
 
 
 
-`tsv`, `csv` and  `h5ad` format are supported.
+**Supported input formats:**
+- `tsv`
+- `csv`
+- `h5ad`
+- `zarr`
+- `h5`
 
+You can use any of these formats for your input matrix.
 
 It can be used for new inference by executing the following command:  
 
@@ -49,14 +55,16 @@ The parameter `ckp` denotes the checkpoints of pre-trained model used for infere
 The checkpoints used in article for [scRNA-seq data](https://drive.google.com/file/d/1l05-wMbPucfC4IG4oDmT5U-TOn_YZazL/view?usp=drive_link) and [spatial transcriptomics (ST) data](https://drive.google.com/file/d/1ci78ccgSwZStWU14PRR-OklDWRhI-8rf/view?usp=drive_link) are available for download. 
 
 If you wish to perform inference on your own dataset, please replace `data_matrix.tsv` with your own expression matrix.  
-`tsv` and `csv` format are supported.
+**Supported formats:** `zarr`, `h5ad`, `h5`, `tsv`, and `csv`.
+
+Additionally, you can use the `infering` function from `infer.py` to perform inference on an AnnData object directly within your code. This function allows for more flexible integration into existing workflows.
 
 ---
 
 
 Regarding the data (train, val and test), please refer to the "Data availability" and "Methods" section of the [article](https://www.nature.com/articles/s41467-024-46413-6).  
-The “Data Availability” section of the article provides a detailed description of the test data, including Cell line data, Peripheral Blood Mononuclear Cells (PBMC) data, and other data from patients. The corresponding test results are presented in Figure 3b.  
-The sample test data in previous versions is also from the “Data Availability” section.    
+The "Data Availability" section of the article provides a detailed description of the test data, including Cell line data, Peripheral Blood Mononuclear Cells (PBMC) data, and other data from patients. The corresponding test results are presented in Figure 3b.  
+The sample test data in previous versions is also from the "Data Availability" section.    
 
 ---
 
@@ -65,7 +73,7 @@ More usage for **inference**:
 ```
 python -u infer.py \     
     --ckp=<ckp_file> \   # path for pre-trained model
-    --matrix=<data_file> \ # path for data, "tsv", "csv" and  "h5ad" format are supported. 
+    --matrix=<data_file> \ # path for data, "tsv", "csv", "h5ad", "h5", and "zarr" formats are supported. 
     --out=<output_file> \ # out path
     --threshold=<threshold> # threshold of inference, default=0.5. Recommended to use 0.5 for scRNA-seq, 10x Visium, legacy ST and slide-seq data. Recommended to use 0.9766 for MERFISH data.
 ```
